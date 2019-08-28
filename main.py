@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, current_app
 from os.path import join, dirname
 from dotenv import load_dotenv
 
@@ -30,6 +30,16 @@ def send():
     )
 
     return response
+
+@app.route("/api/v1/callback/at", methods=['POST'])
+def callback_at():l
+    current_app.logger.debug('africastalking')
+    print(request.form)
+
+@app.route("/api/v1/callback/nexmo", methods=['POST'])
+def callback_at():
+    current_app.logger.debug('nexmo')
+    print(request.form)
 
 if __name__ == "__main__":   
     app.run(host='0.0.0.0', port=5000, debug=False, threaded=True)
