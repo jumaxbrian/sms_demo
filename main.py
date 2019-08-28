@@ -83,9 +83,10 @@ def callback_nexmo():
     current_app.logger.debug('nexmo callback')
     # print(request.form)
     data = utils.sanitize_nexmo_delivery(request.form)
-    
+
     if data:
         phone_number = data["phone_number"]
+        current_app.logger.debug(str(settings.messages_dict))
         original_data = settings.messages_dict[phone_number]
         response = jsonify(data)
         response.status_code = 200
