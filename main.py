@@ -37,7 +37,7 @@ def callback_at():
     print(request.form)
 
 @app.route("/api/v1/callback/nexmo", methods=['POST'])
-def callback_at():
+def callback_nexmo():
     current_app.logger.debug('nexmo')
     print(request.form)
 
