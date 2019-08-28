@@ -64,7 +64,7 @@ def send_sms():
     provider_list = [Nexmo(), AfricasTalking()]
     for provider in provider_list:
         while settings.messages_queue:
-            data = settings.messages_queue.pop_left()
+            data = settings.messages_queue.popleft()
             response = provider.send(
                 sender = data["sender"],
                 recipient = data["recipient"],
