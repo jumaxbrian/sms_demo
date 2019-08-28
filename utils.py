@@ -50,8 +50,9 @@ def sanitize_nexmo_delivery(delivery):
 
     response = None
     if status in FINAL_STATUS:
+        phone_number = "+" + delivery["msisdn"]
         response = {
-            "phone_number": delivery["msisdn"],
+            "phone_number": phone_number,
             "network_code": delivery["network-code"],
             "id": delivery["messageId"],
             "status": delivery["status"].lower(),
