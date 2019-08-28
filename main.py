@@ -69,7 +69,7 @@ def callback_at():
             str(sender_response),
             str(response)
         )
-        settings.messages_dict[phone_number]
+        del settings.messages_dict[phone_number]
         current_app.logger.debug(log_msg)
 
     # response to service provider
@@ -87,7 +87,7 @@ def callback_nexmo():
 
     if data:
         phone_number = data["phone_number"]
-        print(str(settings.messages_dict))
+        # print(str(settings.messages_dict))
         original_data = settings.messages_dict[phone_number]
         response = jsonify(data)
         response.status_code = 200
