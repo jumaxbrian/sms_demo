@@ -83,8 +83,24 @@ def callback_nexmo():
     current_app.logger.debug('nexmo callback')
     # print(request.form)
     data = utils.sanitize_nexmo_delivery(request.form)
-    response = jsonify(data)
-    response.status_code = 200
+    
+    if data:
+        phone_number = data["phone_number"]
+        original_data = settings.messages_dict[phone_number]
+        response = jsonify(data)
+        response.status_code = 200
+        sender_response = requests.post(original_data["callback_url"], json=response)
+        log_msg = "{}: {}".format(
+            str(sender_response),
+            str(response)
+        )
+        current_app.logger.debug(log_msg)
+
+    # response to service provider
+    if data is None:
+        response = jsonify({"None":"None"})
+        response.status_code = 200
+    
     return response
 
 @app.route("/api/v1/callback/dummy", methods=['POST'])
