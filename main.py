@@ -32,7 +32,10 @@ def send():
     # print(request.form)
 
     if input_error:
-        response =  jsonify({"error":input_error})
+        response =  jsonify({
+            "status":"error"
+            "description":input_error
+        })
         response.status_code = 400
         return response
 
