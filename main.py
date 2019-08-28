@@ -33,7 +33,7 @@ def send():
 
     if input_error:
         response =  jsonify({
-            "status":"error"
+            "status":"error",
             "description":input_error
         })
         response.status_code = 400
