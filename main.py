@@ -62,10 +62,10 @@ def callback_at():
         response = jsonify(data)
         response.status_code = 200
         sender_response = requests.post(original_data["callback_url"], json=response)
-        log_msg = "{}: {}".format{
+        log_msg = "{}: {}".format(
             str(sender_response),
             str(response)
-        }
+        )
         current_app.logger.debug(log_msg)
 
     # response to service provider
