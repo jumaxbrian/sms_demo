@@ -32,7 +32,7 @@ def send():
     return response
 
 @app.route("/api/v1/callback/at", methods=['POST'])
-def callback_at():l
+def callback_at():
     current_app.logger.debug('africastalking')
     print(request.form)
 
