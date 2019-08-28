@@ -87,7 +87,7 @@ def callback_nexmo():
 @app.route("/api/v1/callback/dummy", methods=['POST'])
 def dummy_sender_callback():
     current_app.logger.debug(request.form)
-    response = jsonify("None":"None")
+    response = jsonify({"None":"None"})
     response.status_code = 200
     return response
 
